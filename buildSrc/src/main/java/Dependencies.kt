@@ -28,6 +28,7 @@ object Versions {
     const val lifecycle = "2.3.1"
     const val activity = "1.4.0"
     const val koin = "3.1.5"
+    const val timber = "4.7.1"
 
     // Testing dependencies
     const val jUnit = "4.13.2"
@@ -53,6 +54,7 @@ object Dependencies {
 object AndroidDependencies {
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
     const val core = "androidx.core:core-ktx:${Versions.core}"
+    const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
     val compose = Compose
     object Compose {
         const val ui = "androidx.compose.ui:ui:${Versions.compose}"

@@ -57,6 +57,8 @@ android {
 }
 
 dependencies {
+    implementation(project(Projects.core))
+
     implementation(Dependencies.android.core)
     implementation(Dependencies.android.compose.ui)
     implementation(Dependencies.android.compose.preview)

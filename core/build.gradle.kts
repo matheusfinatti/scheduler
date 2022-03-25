@@ -37,6 +37,7 @@ android {
 }
 
 dependencies {
+    implementation(Dependencies.android.timber)
     implementation(Dependencies.android.core)
 
     testImplementation(Dependencies.test.jUnit)
