@@ -1,0 +1,35 @@
+build:
+  maxIssues: 1
+
+complexity:
+  TooManyFunctions:
+    active: true
+    thresholdInFiles: 20
+    thresholdInClasses: 20
+    thresholdInInterfaces: 20
+    thresholdInObjects: 20
+    thresholdInEnums: 20
+
+exceptions:
+  ComplexMethod:
+    threshold: 15
+    ignoreSingleWhenExpression: true
+    ignoreSimpleWhenEntries: true
+  TooGenericExceptionCaught:
+    exceptionNames:
+      - Error
+      - Exception
+      - RuntimeException
+      - Throwable
+
+comments:
+  UndocumentedPublicClass:
+    active: true
+  UndocumentedPublicFunction:
+    active: true
+  CommentOverPrivateFunction:
+    active: false
+
+potential-bugs:
+  LateinitUsage:
+    active: false

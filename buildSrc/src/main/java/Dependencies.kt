@@ -37,12 +37,17 @@ object Versions {
         const val jUnit = "1.1.3"
         const val espresso = "3.4.0"
     }
+
+    // Quality dependencies
+    const val detekt = "1.20.0-RC1"
+    const val ktlint = "0.45.1"
 }
 
 object Dependencies {
     val android = AndroidDependencies
     val test = TestDependencies
     val androidTest = AndroidTestDependencies
+    val quality = QualityDependencies
 }
 
 object AndroidDependencies {
@@ -82,4 +87,9 @@ object AndroidTestDependencies {
     const val jUnit = "androidx.test.ext:junit-ktx:${Versions.androidTest.jUnit}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.androidTest.espresso}"
     const val compose = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
+}
+
+object QualityDependencies {
+    const val ktlint = "com.pinterest:ktlint:${Versions.ktlint}"
+    const val detekt = "io.gitlab.arturbosch.detekt:detekt-cli:${Versions.detekt}"
 }
