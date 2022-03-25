@@ -46,6 +46,5 @@ dependencies {
     api(Dependencies.android.koin.android)
     api(Dependencies.android.retrofit)
 
-
     testImplementation(Dependencies.test.jUnit)
 }

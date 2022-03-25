@@ -1,5 +1,3 @@
-import org.gradle.internal.impldep.com.google.api.services.storage.model.Bucket
-
 /**
  * Describes all dependencies versions.
  */
@@ -32,6 +30,7 @@ object Versions {
     const val retrofit = "2.9.0"
     const val moshi = "1.13.0"
     const val httpLogging = "4.9.3"
+    const val desugar = "1.1.5"
 
 
     // Testing dependencies
@@ -62,6 +61,7 @@ object AndroidDependencies {
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val httpLogging = "com.squareup.okhttp3:logging-interceptor:${Versions.httpLogging}"
     const val moshi = "com.squareup.moshi:moshi:${Versions.moshi}"
+    const val desugar = "com.android.tools:desugar_jdk_libs:${Versions.desugar}"
     val compose = Compose
     object Compose {
         const val ui = "androidx.compose.ui:ui:${Versions.compose}"
@@ -91,6 +91,7 @@ object TestDependencies {
     const val mockkAndroid = "io.mockk:mockk-android:${Versions.mockk}"
     const val koin = "io.insert-koin:koin-test:${Versions.koin}"
     const val koinjunit = "io.insert-koin:koin-test-junit4:${Versions.koin}"
+    const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
 }
 
 object AndroidTestDependencies {
