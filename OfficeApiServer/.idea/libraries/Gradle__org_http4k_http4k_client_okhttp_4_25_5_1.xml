@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.http4k:http4k-client-okhttp:4.25.5.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.http4k/http4k-client-okhttp/4.25.5.1/1b24d4b700b66b0aa4f99c439185bdc7e87b376c/http4k-client-okhttp-4.25.5.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.http4k/http4k-client-okhttp/4.25.5.1/18cc907dc80c7ee3ec6e4168c40beb54c3d412fa/http4k-client-okhttp-4.25.5.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
