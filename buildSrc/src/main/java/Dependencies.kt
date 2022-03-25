@@ -21,6 +21,8 @@ object Versions {
     }
 
     // Library dependencies
+    const val kotlin = "1.6.10"
+    const val coroutines = "1.3.9"
     const val core = "1.7.0"
     const val compose = "1.1.1"
     const val lifecycle = "2.3.1"
@@ -39,9 +41,12 @@ object Versions {
 
 object Dependencies {
     val android = AndroidDependencies
+    val test = TestDependencies
+    val androidTest = AndroidTestDependencies
 }
 
 object AndroidDependencies {
+    const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
     const val core = "androidx.core:core-ktx:${Versions.core}"
     val compose = Compose
     object Compose {
