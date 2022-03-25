@@ -27,8 +27,12 @@ object Versions {
     const val compose = "1.1.1"
     const val lifecycle = "2.3.1"
     const val activity = "1.4.0"
-    const val koin = "3.1.5"
+    const val koin = "3.2.0-beta-1"
     const val timber = "4.7.1"
+    const val retrofit = "2.9.0"
+    const val moshi = "1.13.0"
+    const val httpLogging = "4.9.3"
+
 
     // Testing dependencies
     const val jUnit = "4.13.2"
@@ -55,6 +59,9 @@ object AndroidDependencies {
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
     const val core = "androidx.core:core-ktx:${Versions.core}"
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val httpLogging = "com.squareup.okhttp3:logging-interceptor:${Versions.httpLogging}"
+    const val moshi = "com.squareup.moshi:moshi:${Versions.moshi}"
     val compose = Compose
     object Compose {
         const val ui = "androidx.compose.ui:ui:${Versions.compose}"
@@ -73,6 +80,7 @@ object AndroidDependencies {
     val koin = Koin
     object Koin {
         const val core = "io.insert-koin:koin-core:${Versions.koin}"
+        const val android = "io.insert-koin:koin-android:${Versions.koin}"
         const val compose = "io.insert-koin:koin-androidx-compose:${Versions.koin}"
     }
 }

@@ -38,7 +38,14 @@ android {
 
 dependencies {
     implementation(Dependencies.android.timber)
-    implementation(Dependencies.android.core)
+    implementation(Dependencies.android.httpLogging)
+
+    api(Dependencies.android.core)
+    api(Dependencies.android.moshi)
+    api(Dependencies.android.koin.core)
+    api(Dependencies.android.koin.android)
+    api(Dependencies.android.retrofit)
+
 
     testImplementation(Dependencies.test.jUnit)
 }
