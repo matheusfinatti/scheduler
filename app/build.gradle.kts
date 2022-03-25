@@ -54,6 +54,7 @@ android {
             excludes.add("/META-INF/{AL2.0,LGPL2.1}")
         }
     }
+    dynamicFeatures += setOf(":app:scheduler")
 }
 
 dependencies {

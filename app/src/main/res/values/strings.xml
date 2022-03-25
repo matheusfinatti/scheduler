@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">OfficeScheduler</string>
+    <string name="title_scheduler">Scheduler</string>
 </resources>
