@@ -53,7 +53,6 @@ object Log {
     /**
      * Info log.
      *
-     * @param message the log message
      * @param throwable an optional exception to log.
      */
     fun i(throwable: Throwable?) {
@@ -82,6 +81,7 @@ object Log {
     /**
      * Debug log.
      *
+     * @param message the error message.
      * @param throwable the exception to be logged.
      */
     fun e(message: String, throwable: Throwable? = null) {

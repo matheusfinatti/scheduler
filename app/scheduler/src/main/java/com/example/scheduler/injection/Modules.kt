@@ -8,6 +8,9 @@ import org.koin.core.context.loadKoinModules
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
+/**
+ * Defines the data module for the scheduler feature.
+ */
 val schedulerDataModule = module {
 
     // Retrofit instance for the scheduler API

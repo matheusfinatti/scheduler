@@ -16,6 +16,7 @@ internal class SpacesRepositoryImpl(
     private val spacesApi: SpacesApi,
 ) : SpacesRepository {
 
+    @Suppress("TooGenericExceptionThrown")
     override suspend fun getSpaces(): Flow<SpaceCalendarEntriesState> =
         withContext(dispatcher) {
             flow {

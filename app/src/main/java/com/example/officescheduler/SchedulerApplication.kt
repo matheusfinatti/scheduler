@@ -8,6 +8,9 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 
+/**
+ * Application override for sub-function initialization.
+ */
 class SchedulerApplication : Application() {
 
     override fun onCreate() {

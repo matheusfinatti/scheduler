@@ -1,3 +1,4 @@
+@file:Suppress("UndocumentedPublicFunction", "FunctionNaming")
 package com.example.officescheduler.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme

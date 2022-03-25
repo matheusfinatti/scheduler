@@ -1,3 +1,4 @@
+@file:Suppress("ThrowingExceptionsWithoutMessageOrCause")
 package com.example.core.log
 
 import android.annotation.SuppressLint

@@ -1,3 +1,4 @@
+@file:Suppress("UndocumentedPublicFunction", "FunctionNaming")
 package com.example.officescheduler
 
 import android.os.Bundle
@@ -12,6 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.officescheduler.ui.theme.OfficeSchedulerTheme
 
+/**
+ * Main app activity.
+ */
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

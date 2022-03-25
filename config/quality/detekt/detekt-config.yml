@@ -2,6 +2,10 @@ build:
   maxIssues: 1
 
 complexity:
+  ComplexMethod:
+    threshold: 15
+    ignoreSingleWhenExpression: true
+    ignoreSimpleWhenEntries: true
   TooManyFunctions:
     active: true
     thresholdInFiles: 20
@@ -11,10 +15,6 @@ complexity:
     thresholdInEnums: 20
 
 exceptions:
-  ComplexMethod:
-    threshold: 15
-    ignoreSingleWhenExpression: true
-    ignoreSimpleWhenEntries: true
   TooGenericExceptionCaught:
     exceptionNames:
       - Error
@@ -27,6 +27,8 @@ comments:
     active: true
   UndocumentedPublicFunction:
     active: true
+  UndocumentedPublicProperty:
+    active: false
   CommentOverPrivateFunction:
     active: false
 

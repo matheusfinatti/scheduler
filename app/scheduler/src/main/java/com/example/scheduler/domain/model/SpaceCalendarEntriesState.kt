@@ -13,14 +13,14 @@ sealed class SpaceCalendarEntriesState {
     /**
      * Successful response.
      *
-     * @param entries the returned entries.
+     * @property entries the returned entries.
      */
     data class Entries(val entries: List<SpaceCalendarEntry>) : SpaceCalendarEntriesState()
 
     /**
      * Error response.
      *
-     * @param error the thrown exception.
+     * @property error the thrown exception.
      */
     data class Error(val error: Throwable) : SpaceCalendarEntriesState()
 }
