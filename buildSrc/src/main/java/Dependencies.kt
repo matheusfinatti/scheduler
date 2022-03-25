@@ -25,6 +25,7 @@ object Versions {
     const val compose = "1.1.1"
     const val lifecycle = "2.3.1"
     const val activity = "1.4.0"
+    const val koin = "3.1.5"
 
     // Testing dependencies
     const val jUnit = "4.13.2"
@@ -57,12 +58,19 @@ object AndroidDependencies {
     object Activity {
         const val compose = "androidx.activity:activity-compose:${Versions.activity}"
     }
+    val koin = Koin
+    object Koin {
+        const val core = "io.insert-koin:koin-core:${Versions.koin}"
+        const val compose = "io.insert-koin:koin-androidx-compose:${Versions.koin}"
+    }
 }
 
 object TestDependencies {
     const val jUnit = "junit:junit:${Versions.jUnit}"
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
     const val mockkAndroid = "io.mockk:mockk-android:${Versions.mockk}"
+    const val koin = "io.insert-koin:koin-test:${Versions.koin}"
+    const val koinjunit = "io.insert-koin:koin-test-junit4:${Versions.koin}"
 }
 
 object AndroidTestDependencies {
