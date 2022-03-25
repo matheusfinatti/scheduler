@@ -33,7 +33,8 @@ class DebugTree : Timber.Tree() {
         return if (tag.length <= MAX_TAG_LENGTH || Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             "$PREFIX$tag"
         } else {
-            "$PREFIX${tag.substring(0,
+            "$PREFIX${tag.substring(
+                0,
                 MAX_TAG_LENGTH
             )}"
         }
