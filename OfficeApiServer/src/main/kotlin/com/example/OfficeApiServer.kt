@@ -1,3 +1,5 @@
+@file:Suppress("SameParameterValue")
+
 package com.example
 
 import com.example.formats.MoshiMessage
@@ -13,6 +15,7 @@ import org.http4k.routing.bind
 import org.http4k.routing.routes
 import org.http4k.server.SunHttp
 import org.http4k.server.asServer
+import java.io.File
 
 val app: HttpHandler = routes(
     "/ping" bind GET to {
@@ -21,6 +24,10 @@ val app: HttpHandler = routes(
 
     "/formats/json/moshi" bind GET to {
         Response(OK).with(moshiMessageLens of MoshiMessage("Barry", "Hello there!"))
+    },
+
+    "/offices" bind GET to {
+        Response(OK).body(readFile("response.json"))
     }
 )
 
@@ -31,3 +38,6 @@ fun main() {
 
     println("Server started on " + server.port())
 }
+
+private fun readFile(filename: String) =
+    File(filename).readText(charset = Charsets.UTF_8)
