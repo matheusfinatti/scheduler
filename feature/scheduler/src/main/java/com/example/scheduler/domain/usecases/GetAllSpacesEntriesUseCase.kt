@@ -7,7 +7,7 @@ import com.example.scheduler.domain.repository.SpacesRepository
  *
  * @property repository the [SpacesRepository] used to fetch the spaces calendars.
  */
-internal class GetAllSpacesEntriesUseCase(
+class GetAllSpacesEntriesUseCase(
     private val repository: SpacesRepository,
 ) {
 

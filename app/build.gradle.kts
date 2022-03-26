@@ -68,7 +68,6 @@ dependencies {
     implementation(Dependencies.android.lifecycle.runtime)
     implementation(Dependencies.android.activity.compose)
 
-    api(Dependencies.android.navigation.fragment)
     api(Dependencies.android.navigation.ui)
     api(Dependencies.android.navigation.feature)
     api(Dependencies.android.navigation.compose)

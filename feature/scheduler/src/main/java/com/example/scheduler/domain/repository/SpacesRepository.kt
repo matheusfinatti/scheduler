@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 /**
  * Defines a repository for getting spaces & their calendars.
  */
-internal interface SpacesRepository {
+interface SpacesRepository {
 
     /**
      * Gets all spaces & their calendar entries.

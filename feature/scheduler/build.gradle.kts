@@ -34,6 +34,12 @@ android {
 dependencies {
     implementation(project(Projects.core))
 
+    implementation(Dependencies.android.core)
+    implementation(Dependencies.android.compose.preview)
+    implementation(Dependencies.android.compose.material)
+    implementation(Dependencies.android.compose.ui)
+    debugImplementation(Dependencies.android.compose.tooling)
+
     coreLibraryDesugaring(Dependencies.android.desugar)
 
     testImplementation(Dependencies.test.jUnit)

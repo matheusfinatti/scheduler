@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.CoroutineContext
 
-internal class SchedulerViewModel(
+class SchedulerViewModel(
     private val dispatcher: CoroutineContext,
     private val getAllSpacesEntriesUseCase: GetAllSpacesEntriesUseCase,
 ) : ViewModel() {
