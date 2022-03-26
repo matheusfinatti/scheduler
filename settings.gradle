@@ -15,5 +15,5 @@ dependencyResolutionManagement {
 rootProject.name = "OfficeScheduler"
 include ':app'
 include ':core'
-include ':app:scheduler'
+include ':feature:scheduler'
 include ':navigation'

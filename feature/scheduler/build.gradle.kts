@@ -1,5 +1,5 @@
 plugins {
-    id(GradlePlugins.android.dynamicFeature)
+    id(GradlePlugins.android.library)
     id(GradlePlugins.kotlin.android)
 }
 
@@ -33,7 +33,6 @@ android {
 
 dependencies {
     implementation(project(Projects.core))
-    implementation(project(Projects.app))
 
     coreLibraryDesugaring(Dependencies.android.desugar)
 

@@ -54,11 +54,12 @@ android {
             excludes.add("/META-INF/{AL2.0,LGPL2.1}")
         }
     }
-    dynamicFeatures += setOf(":app:scheduler")
+
 }
 
 dependencies {
     implementation(project(Projects.core))
+    implementation(project(Projects.features.scheduler))
 
     implementation(Dependencies.android.core)
     implementation(Dependencies.android.compose.ui)
