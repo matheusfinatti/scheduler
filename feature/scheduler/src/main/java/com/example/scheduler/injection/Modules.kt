@@ -39,7 +39,6 @@ val schedulerModule = module {
     // View Model
     viewModel {
         SchedulerViewModel(
-            Dispatchers.Main,
             getAllSpacesEntriesUseCase = get()
         )
     }

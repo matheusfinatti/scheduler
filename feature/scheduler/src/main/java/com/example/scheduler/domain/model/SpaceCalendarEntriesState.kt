@@ -6,11 +6,6 @@ package com.example.scheduler.domain.model
 sealed class SpaceCalendarEntriesState {
 
     /**
-     * Request is loading.
-     */
-    object Loading : SpaceCalendarEntriesState()
-
-    /**
      * Successful response.
      *
      * @property entries the returned entries.

@@ -2,24 +2,27 @@ package com.example.scheduler.presentation
 
 import androidx.lifecycle.ViewModel
 import com.example.scheduler.domain.usecases.GetAllSpacesEntriesUseCase
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.withContext
-import kotlin.coroutines.CoroutineContext
 
+/**
+ * View model for the scheduler screen.
+ */
 class SchedulerViewModel(
-    private val dispatcher: CoroutineContext,
     private val getAllSpacesEntriesUseCase: GetAllSpacesEntriesUseCase,
 ) : ViewModel() {
 
     /**
-     * Gets a flow that emits the view state based on the repository returned state.
+     * Requests the spaces & calendar entries.
      *
-     * @return a [Flow] that emits [SchedulerViewState]s.
+     * @return a [Flow] that emits the current view state of the request.
      */
-    suspend fun getEntries(): Flow<SchedulerViewState> = withContext(dispatcher) {
-        getAllSpacesEntriesUseCase.execute().map { state ->
-            SchedulerViewState.fromState(state)
-        }
-    }
+     fun getEntries() = flow {
+         emit(SchedulerViewState.Loading)
+
+         getAllSpacesEntriesUseCase.execute().map { state ->
+             SchedulerViewState.fromState(state)
+         }.collect(::emit)
+     }
 }

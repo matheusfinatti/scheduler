@@ -35,22 +35,12 @@ class SpacesRepositoryImplTest {
     private val expectedModel = listOf(SpaceCalendarEntry(dataModel))
 
     @Test
-    fun `when requesting, then it should emit loading state first`() = runBlockingTest {
-        // when
-        val result = repository.getSpaces()
-
-        // then
-        val firstItem = result.first()
-        assertEquals(SpaceCalendarEntriesState.Loading, firstItem)
-    }
-
-    @Test
     fun `given a list of entries, when requesting, then this list should be emitted`() = runBlockingTest {
         // given
         coEvery { spacesApi.getSpaces() } returns Response.success(responseModel)
 
         // when
-        val result = repository.getSpaces().drop(1).first()
+        val result = repository.getSpaces().first()
 
         // then
         val entries = (result as SpaceCalendarEntriesState.Entries).entries
@@ -63,7 +53,7 @@ class SpacesRepositoryImplTest {
         coEvery { spacesApi.getSpaces() } returns Response.success(null)
 
         // when
-        val result = repository.getSpaces().drop(1).first()
+        val result = repository.getSpaces().first()
 
         // then
         val entries = (result as SpaceCalendarEntriesState.Entries).entries

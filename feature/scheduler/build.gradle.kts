@@ -54,4 +54,5 @@ dependencies {
     testImplementation(Dependencies.test.mockk)
     testImplementation(Dependencies.test.mockkAndroid)
     testImplementation(Dependencies.test.coroutines)
+    testImplementation(Dependencies.test.turbine)
 }

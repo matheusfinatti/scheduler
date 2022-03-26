@@ -41,6 +41,7 @@ object Versions {
         const val jUnit = "1.1.3"
         const val espresso = "3.4.0"
     }
+    const val turbine = "0.7.0"
 
     // Quality dependencies
     const val detekt = "1.20.0-RC1"
@@ -98,6 +99,7 @@ object TestDependencies {
     const val koin = "io.insert-koin:koin-test:${Versions.koin}"
     const val koinjunit = "io.insert-koin:koin-test-junit4:${Versions.koin}"
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
+    const val turbine = "app.cash.turbine:turbine:${Versions.turbine}"
 }
 
 object AndroidTestDependencies {

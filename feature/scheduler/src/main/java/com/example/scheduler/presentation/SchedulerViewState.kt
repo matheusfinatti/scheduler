@@ -13,6 +13,11 @@ sealed class SchedulerViewState {
     object Loading : SchedulerViewState()
 
     /**
+     * Empty view state.
+     */
+    object Empty : SchedulerViewState()
+
+    /**
      * List of spaces & calendar entries.
      *
      * @property state state with a list of entries.
@@ -41,7 +46,6 @@ sealed class SchedulerViewState {
             when (state) {
                 is SpaceCalendarEntriesState.Entries -> List(state)
                 is SpaceCalendarEntriesState.Error -> Error(state)
-                SpaceCalendarEntriesState.Loading -> Loading
             }
     }
 }
