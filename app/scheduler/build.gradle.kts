@@ -2,6 +2,9 @@ plugins {
     id(GradlePlugins.android.dynamicFeature)
     id(GradlePlugins.kotlin.android)
 }
+
+apply(from = "$rootDir/config/quality.gradle.kts")
+
 android {
     compileSdk = Versions.compileSdk
 
