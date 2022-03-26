@@ -30,7 +30,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import coil.size.Size
-import com.example.scheduler.domain.model.SpaceCalendarEntriesState
+import com.example.scheduler.domain.model.OfficeSpace
 import com.example.scheduler.domain.model.SpaceCalendarEntry
 import java.util.Date
 import java.util.TimeZone
@@ -49,23 +49,23 @@ fun SchedulerScreen(viewModel: SchedulerViewModel) {
         when (viewState) {
             SchedulerViewState.Empty -> Unit
             is SchedulerViewState.Error -> Error(viewState as SchedulerViewState.Error)
-            is SchedulerViewState.List -> Spaces(viewState as SchedulerViewState.List)
+            is SchedulerViewState.Entries -> Spaces(viewState as SchedulerViewState.Entries)
             SchedulerViewState.Loading -> Loading()
         }
     }
 }
 
 @Composable
-fun Spaces(viewState: SchedulerViewState.List) {
+fun Spaces(viewState: SchedulerViewState.Entries) {
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        viewState.entries.forEach { entry ->
+        viewState.spaces.forEach { space ->
             item {
-                SpaceCard(entry = entry, Modifier.fillParentMaxWidth())
+                SpaceCard(officeSpace = space, Modifier.fillParentMaxWidth())
             }
         }
 
@@ -73,7 +73,7 @@ fun Spaces(viewState: SchedulerViewState.List) {
 }
 
 @Composable
-fun SpaceCard(entry: SpaceCalendarEntry, modifier: Modifier) {
+fun SpaceCard(officeSpace: OfficeSpace, modifier: Modifier) {
     Column(modifier) {
        Card(
            modifier = Modifier.fillMaxWidth().aspectRatio(1.5f),
@@ -81,7 +81,7 @@ fun SpaceCard(entry: SpaceCalendarEntry, modifier: Modifier) {
        ) {
            AsyncImage(
                model = ImageRequest.Builder(LocalContext.current)
-                   .data(entry.image)
+                   .data(officeSpace.image)
                    .crossfade(true)
                    .size(Size.ORIGINAL)
                    .placeholder(coreR.drawable.placeholder)
@@ -97,7 +97,7 @@ fun SpaceCard(entry: SpaceCalendarEntry, modifier: Modifier) {
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(
-                text = entry.name,
+                text = officeSpace.name,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth()
             )
@@ -132,24 +132,28 @@ fun SpacePicture(url: String) {
 @Preview
 @Composable
 private fun ListPreview() {
-    val viewState = SchedulerViewState.List(
-        state = SpaceCalendarEntriesState.Entries(
-            listOf(
+    val viewState = SchedulerViewState.Entries(
+        entries = mapOf(
+            OfficeSpace(
+                name = "Space 1",
+                image = "",
+                timezone = TimeZone.getDefault(),
+            ) to listOf(
                 SpaceCalendarEntry(
                     startTime = Date(),
                     endTime = Date(),
-                    name = "Space 1",
-                    image = "",
-                    timezone = TimeZone.getDefault(),
                 ),
+            ),
+            OfficeSpace(
+                name = "Space 2",
+                image = "",
+                timezone = TimeZone.getDefault(),
+            ) to listOf(
                 SpaceCalendarEntry(
                     startTime = Date(),
                     endTime = Date(),
-                    name = "Space 2",
-                    image = "",
-                    timezone = TimeZone.getDefault(),
                 ),
-            )
+            ),
         )
     )
 
@@ -159,13 +163,11 @@ private fun ListPreview() {
 @Preview
 @Composable
 private fun SpaceCardPreview() {
-    val entry = SpaceCalendarEntry(
-        startTime = Date(),
-        endTime = Date(),
+    val space = OfficeSpace(
         name = "Space 1",
         image = "",
         timezone = TimeZone.getDefault(),
     )
 
-    SpaceCard(entry = entry, Modifier.fillMaxWidth())
+    SpaceCard(officeSpace = space, Modifier.fillMaxWidth())
 }

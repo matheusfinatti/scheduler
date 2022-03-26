@@ -1,7 +1,6 @@
 package com.example.scheduler.presentation
 
-import com.example.scheduler.domain.model.SpaceCalendarEntriesState
-import com.example.scheduler.domain.model.SpaceCalendarEntry
+import com.example.scheduler.domain.model.OfficeSpace
 import com.example.scheduler.domain.usecases.GetAllSpacesEntriesUseCase
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -10,9 +9,9 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.test.TestCoroutineDispatcher
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -25,7 +24,7 @@ class SchedulerViewModelTest {
 
     private val usecase = mockk<GetAllSpacesEntriesUseCase>(relaxed = true)
     private val viewModel = SchedulerViewModel(usecase)
-    private val dispatcher = TestCoroutineDispatcher()
+    private val dispatcher = UnconfinedTestDispatcher()
 
     @Before
     fun setup() {
@@ -38,22 +37,22 @@ class SchedulerViewModelTest {
     }
 
     @Test
-    fun `given a list of entries, when getting it, it should emit a list view state`() = runBlockingTest {
+    fun `given a list of entries, when getting it, it should emit a list view state`() = runTest {
         // given
         coEvery {
             usecase.execute()
-        } returns flowOf(SpaceCalendarEntriesState.Entries(emptyList()))
+        } returns flowOf(emptyMap())
 
         // when
         val viewState = viewModel.getEntries().drop(1).first()
 
         // then
-        assertTrue(viewState is SchedulerViewState.List)
-        assertEquals(emptyList<SpaceCalendarEntry>(), (viewState as SchedulerViewState.List).entries)
+        assertTrue(viewState is SchedulerViewState.Entries)
+        assertEquals(emptySet<OfficeSpace>(), (viewState as SchedulerViewState.Entries).spaces)
     }
 
     @Test
-    fun `when getting the entries, it should emit a loading view state`() = runBlockingTest {
+    fun `when getting the entries, it should emit a loading view state`() = runTest {
         // when
         val viewState = viewModel.getEntries().first()
 
@@ -62,12 +61,12 @@ class SchedulerViewModelTest {
     }
 
     @Test
-    fun `given an error, when getting it, it should emit an error view state`() = runBlockingTest {
+    fun `given an error, when getting it, it should emit an error view state`() = runTest {
         // given
         val exception = Exception("Test")
         coEvery {
             usecase.execute()
-        } returns flowOf(SpaceCalendarEntriesState.Error(exception))
+        } throws exception
 
         // when
         val viewState = viewModel.getEntries().drop(1).first()

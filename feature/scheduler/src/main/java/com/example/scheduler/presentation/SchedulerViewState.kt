@@ -1,6 +1,7 @@
 package com.example.scheduler.presentation
 
-import com.example.scheduler.domain.model.SpaceCalendarEntriesState
+import com.example.scheduler.domain.model.OfficeSpace
+import com.example.scheduler.domain.model.SpaceCalendarEntry
 
 /**
  * View state for the scheduler.
@@ -20,32 +21,23 @@ sealed class SchedulerViewState {
     /**
      * List of spaces & calendar entries.
      *
-     * @property state state with a list of entries.
+     * @property entries a map with spaces and their calendar entries.
      */
-    class List(private val state: SpaceCalendarEntriesState.Entries) : SchedulerViewState() {
-        val entries = state.entries
+    class Entries(
+        private val entries: Map<OfficeSpace, List<SpaceCalendarEntry>>,
+    ) : SchedulerViewState() {
+
+        val spaces = entries.keys
+
+        fun getCalendar(officeSpace: OfficeSpace) = entries[officeSpace]
     }
 
     /**
      * Error state.
      *
-     * @property state error state.
+     * @property error the throwable.
      */
-    class Error(private val state: SpaceCalendarEntriesState.Error) : SchedulerViewState() {
-        val message = state.error.message
-    }
-
-    companion object {
-
-        /**
-         * Gets the view state relative to the response model.
-         *
-         * @param state the current state.
-         */
-        fun fromState(state: SpaceCalendarEntriesState) =
-            when (state) {
-                is SpaceCalendarEntriesState.Entries -> List(state)
-                is SpaceCalendarEntriesState.Error -> Error(state)
-            }
+    class Error(private val error: Throwable) : SchedulerViewState() {
+        val message = error.message
     }
 }
