@@ -4,44 +4,32 @@ package com.example.officescheduler
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.runtime.collectAsState
+import androidx.navigation.compose.rememberNavController
+import com.example.navigation.NavigationManager
 import com.example.officescheduler.ui.theme.OfficeSchedulerTheme
+import org.koin.android.ext.android.inject
 
 /**
  * Main app activity.
  */
 class MainActivity : ComponentActivity() {
+
+    private val navigationManager by inject<NavigationManager>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             OfficeSchedulerTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Greeting("Android")
+                val navController = rememberNavController()
+                navigationManager.commands.collectAsState().value.also { command ->
+                    if (command.destination.isNotEmpty()) {
+                        navController.navigate(command.destination)
+                    }
                 }
+
+                AppNavigation(navController = navController)
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    OfficeSchedulerTheme {
-        Greeting("Android")
     }
 }

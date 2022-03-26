@@ -44,6 +44,7 @@ dependencies {
     api(Dependencies.android.moshi)
     api(Dependencies.android.koin.core)
     api(Dependencies.android.koin.android)
+    api(Dependencies.android.koin.compose)
     api(Dependencies.android.retrofit)
 
     testImplementation(Dependencies.test.jUnit)

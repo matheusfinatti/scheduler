@@ -60,6 +60,7 @@ android {
 dependencies {
     implementation(project(Projects.core))
     implementation(project(Projects.features.scheduler))
+    implementation(project(Projects.navigation))
 
     implementation(Dependencies.android.core)
     implementation(Dependencies.android.compose.ui)

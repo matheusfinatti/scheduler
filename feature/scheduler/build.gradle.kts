@@ -22,6 +22,14 @@ android {
         }
     }
 
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = Versions.compose
+    }
+
     compileOptions {
         // Necessary to use JDK 1.8 date time in lower API levels (<26).
         isCoreLibraryDesugaringEnabled = true

@@ -3,6 +3,9 @@ package com.example.officescheduler
 import android.app.Application
 import com.example.core.injection.coreDataModule
 import com.example.core.log.Log
+import com.example.officescheduler.injection.appModule
+import com.example.scheduler.injection.schedulerDataModule
+import com.example.scheduler.injection.schedulerModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -23,7 +26,7 @@ class SchedulerApplication : Application() {
         startKoin {
             androidLogger(level = if (BuildConfig.DEBUG) Level.DEBUG else Level.NONE)
             androidContext(this@SchedulerApplication)
-            modules(listOf(coreDataModule))
+            modules(listOf(appModule, coreDataModule, schedulerDataModule, schedulerModule))
         }
 
         Log.d("Application created")
