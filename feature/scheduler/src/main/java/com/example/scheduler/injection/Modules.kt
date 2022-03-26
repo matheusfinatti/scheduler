@@ -10,6 +10,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.dsl.module
 import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 /**
  * Defines the data module for the scheduler feature.
@@ -21,6 +22,7 @@ val schedulerDataModule = module {
         Retrofit.Builder()
             .client(get())
             .baseUrl(ENDPOINT)
+            .addConverterFactory(MoshiConverterFactory.create(get()))
             .build()
             .create(SpacesApi::class.java)
     }
@@ -53,4 +55,4 @@ private val loadModules by lazy {
  */
 fun inject() = loadModules
 
-private const val ENDPOINT = "http://127.0.0.1/"
+private const val ENDPOINT = "http://127.0.0.1:9000/"

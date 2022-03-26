@@ -1,5 +1,6 @@
 package com.example.scheduler.data.repository
 
+import com.example.core.log.Log
 import com.example.core.network.stringSuspending
 import com.example.scheduler.data.remote.SpacesApi
 import com.example.scheduler.domain.model.SpaceCalendarEntriesState
@@ -22,15 +23,17 @@ internal class SpacesRepositoryImpl(
             flow<SpaceCalendarEntriesState> {
                 val response = spacesApi.getSpaces()
                 if (response.isSuccessful) {
-                    val entries = response.body()?.entries?.map { dataModel ->
+                    val entries = response.body()?.map { dataModel ->
                         SpaceCalendarEntry(dataModel)
                     } ?: emptyList()
 
                     emit(SpaceCalendarEntriesState.Entries(entries))
                 } else {
-                    throw Exception(response.errorBody()?.stringSuspending())
+                    val errorMessage = response.errorBody()?.stringSuspending()
+                    throw Exception(errorMessage)
                 }
             }.catch { e ->
+                Log.e("Error: ${e.message}")
                 emit(SpaceCalendarEntriesState.Error(e))
             }
         }

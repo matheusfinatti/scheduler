@@ -1,10 +1,12 @@
 package com.example.scheduler.data.remote.model
 
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
 /**
  * Describes the data model for a space.
  */
+@JsonClass(generateAdapter = true)
 data class SpaceEntryDataModel(
     @Json(name = "starts_at") val startTime: String,
     @Json(name = "ends_at") val endTime: String,

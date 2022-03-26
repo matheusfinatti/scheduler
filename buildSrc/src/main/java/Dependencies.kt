@@ -29,6 +29,7 @@ object Versions {
     const val timber = "4.7.1"
     const val retrofit = "2.9.0"
     const val moshi = "1.13.0"
+    const val moshiConverter = "2.9.0"
     const val httpLogging = "4.9.3"
     const val desugar = "1.1.5"
     const val navigation = "2.4.1"
@@ -61,7 +62,12 @@ object AndroidDependencies {
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val httpLogging = "com.squareup.okhttp3:logging-interceptor:${Versions.httpLogging}"
-    const val moshi = "com.squareup.moshi:moshi:${Versions.moshi}"
+    val moshi = Moshi
+    object Moshi {
+        const val base = "com.squareup.moshi:moshi:${Versions.moshi}"
+        const val kotlin = "com.squareup.moshi:moshi-kotlin:${Versions.moshi}"
+        const val converter = "com.squareup.retrofit2:converter-moshi:${Versions.moshiConverter}"
+    }
     const val desugar = "com.android.tools:desugar_jdk_libs:${Versions.desugar}"
     val compose = Compose
     object Compose {

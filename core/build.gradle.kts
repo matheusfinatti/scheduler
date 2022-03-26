@@ -41,7 +41,9 @@ dependencies {
     implementation(Dependencies.android.httpLogging)
 
     api(Dependencies.android.core)
-    api(Dependencies.android.moshi)
+    api(Dependencies.android.moshi.base)
+    api(Dependencies.android.moshi.kotlin)
+    api(Dependencies.android.moshi.converter)
     api(Dependencies.android.koin.core)
     api(Dependencies.android.koin.android)
     api(Dependencies.android.koin.compose)

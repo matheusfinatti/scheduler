@@ -12,4 +12,11 @@ fun SchedulerScreen(viewModel: SchedulerViewModel) {
         .collectAsState(initial = SchedulerViewState.Empty)
 
     Text("Scheduler ${viewState::class.simpleName}")
+
+    when (val vs = viewState) {
+        SchedulerViewState.Empty -> Text("Empty")
+        is SchedulerViewState.Error -> Text(text = "Error: ${vs.message}")
+        is SchedulerViewState.List -> Text(text = "List: ${vs.entries.map { it.name }}")
+        SchedulerViewState.Loading -> Text(text = "Loading")
+    }
 }

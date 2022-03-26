@@ -1,6 +1,6 @@
 package com.example.scheduler.data.remote
 
-import com.example.scheduler.data.remote.model.EntriesDataModel
+import com.example.scheduler.data.remote.model.SpaceEntryDataModel
 import retrofit2.Response
 import retrofit2.http.GET
 
@@ -15,5 +15,5 @@ internal interface SpacesApi {
      * @return a [Response] with the spaces and entries.
      */
     @GET("offices")
-    suspend fun getSpaces(): Response<EntriesDataModel>
+    suspend fun getSpaces(): Response<List<SpaceEntryDataModel>>
 }
