@@ -2,7 +2,7 @@ package com.example.scheduler.presentation
 
 import com.example.scheduler.domain.model.SpaceCalendarEntriesState
 import com.example.scheduler.domain.model.SpaceCalendarEntry
-import com.example.scheduler.domain.repository.SpacesRepository
+import com.example.scheduler.domain.usecases.GetAllSpacesEntriesUseCase
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.flow.first
@@ -15,15 +15,15 @@ import org.junit.Test
 
 class SchedulerViewModelTest {
 
-    private val repository = mockk<SpacesRepository>()
+    private val usecase = mockk<GetAllSpacesEntriesUseCase>()
     private val dispatcher = TestCoroutineDispatcher()
-    private val viewModel = SchedulerViewModel(dispatcher, repository)
+    private val viewModel = SchedulerViewModel(dispatcher, usecase)
 
     @Test
     fun `given a list of entries, when getting it, it should emit a list view state`() = runBlockingTest {
         // given
         coEvery {
-            repository.getSpaces()
+            usecase.execute()
         } returns flowOf(SpaceCalendarEntriesState.Entries(emptyList()))
 
         // when
@@ -38,7 +38,7 @@ class SchedulerViewModelTest {
     fun `given it's loading, when getting it, it should emit a loading view state`() = runBlockingTest {
         // given
         coEvery {
-            repository.getSpaces()
+            usecase.execute()
         } returns flowOf(SpaceCalendarEntriesState.Loading)
 
         // when
@@ -53,7 +53,7 @@ class SchedulerViewModelTest {
         // given
         val exception = Exception("Test")
         coEvery {
-            repository.getSpaces()
+            usecase.execute()
         } returns flowOf(SpaceCalendarEntriesState.Error(exception))
 
         // when

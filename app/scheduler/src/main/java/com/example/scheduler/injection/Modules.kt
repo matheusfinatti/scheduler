@@ -3,7 +3,10 @@ package com.example.scheduler.injection
 import com.example.scheduler.data.remote.SpacesApi
 import com.example.scheduler.data.repository.SpacesRepositoryImpl
 import com.example.scheduler.domain.repository.SpacesRepository
+import com.example.scheduler.domain.usecases.GetAllSpacesEntriesUseCase
+import com.example.scheduler.presentation.SchedulerViewModel
 import kotlinx.coroutines.Dispatchers
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -25,6 +28,20 @@ val schedulerDataModule = module {
     // Repository
     factory<SpacesRepository> {
         SpacesRepositoryImpl(Dispatchers.Default, get())
+    }
+}
+
+val schedulerModule = module {
+
+    // Use cases
+    factory { GetAllSpacesEntriesUseCase(get()) }
+
+    // View Model
+    viewModel {
+        SchedulerViewModel(
+            Dispatchers.Main,
+            getAllSpacesEntriesUseCase = get()
+        )
     }
 }
 

@@ -1,7 +1,7 @@
 package com.example.scheduler.presentation
 
 import androidx.lifecycle.ViewModel
-import com.example.scheduler.domain.repository.SpacesRepository
+import com.example.scheduler.domain.usecases.GetAllSpacesEntriesUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
@@ -9,7 +9,7 @@ import kotlin.coroutines.CoroutineContext
 
 internal class SchedulerViewModel(
     private val dispatcher: CoroutineContext,
-    private val repository: SpacesRepository,
+    private val getAllSpacesEntriesUseCase: GetAllSpacesEntriesUseCase,
 ) : ViewModel() {
 
     /**
@@ -18,7 +18,7 @@ internal class SchedulerViewModel(
      * @return a [Flow] that emits [SchedulerViewState]s.
      */
     suspend fun getEntries(): Flow<SchedulerViewState> = withContext(dispatcher) {
-        repository.getSpaces().map { state ->
+        getAllSpacesEntriesUseCase.execute().map { state ->
             SchedulerViewState.fromState(state)
         }
     }
