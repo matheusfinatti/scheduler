@@ -33,6 +33,7 @@ object Versions {
     const val httpLogging = "4.9.3"
     const val desugar = "1.1.5"
     const val navigation = "2.4.1"
+    const val coil = "2.0.0-rc02"
 
     // Testing dependencies
     const val jUnit = "4.13.2"
@@ -63,6 +64,7 @@ object AndroidDependencies {
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val httpLogging = "com.squareup.okhttp3:logging-interceptor:${Versions.httpLogging}"
+    const val coil = "io.coil-kt:coil-compose:${Versions.coil}"
     val moshi = Moshi
     object Moshi {
         const val base = "com.squareup.moshi:moshi:${Versions.moshi}"

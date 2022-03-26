@@ -42,6 +42,7 @@ android {
 dependencies {
     implementation(project(Projects.core))
 
+    implementation(Dependencies.android.coil)
     implementation(Dependencies.android.core)
     implementation(Dependencies.android.compose.preview)
     implementation(Dependencies.android.compose.material)
