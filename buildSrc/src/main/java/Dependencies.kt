@@ -31,7 +31,7 @@ object Versions {
     const val moshi = "1.13.0"
     const val httpLogging = "4.9.3"
     const val desugar = "1.1.5"
-
+    const val navigation = "2.4.1"
 
     // Testing dependencies
     const val jUnit = "4.13.2"
@@ -82,6 +82,13 @@ object AndroidDependencies {
         const val core = "io.insert-koin:koin-core:${Versions.koin}"
         const val android = "io.insert-koin:koin-android:${Versions.koin}"
         const val compose = "io.insert-koin:koin-androidx-compose:${Versions.koin}"
+    }
+    val navigation = Navigation
+    object Navigation {
+        const val fragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+        const val ui = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+        const val feature = "androidx.navigation:navigation-dynamic-features-fragment:${Versions.navigation}"
+        const val compose = "androidx.navigation:navigation-compose:${Versions.navigation}"
     }
 }
 
