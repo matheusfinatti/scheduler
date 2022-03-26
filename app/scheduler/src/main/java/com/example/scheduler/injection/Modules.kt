@@ -46,7 +46,7 @@ val schedulerModule = module {
 }
 
 private val loadModules by lazy {
-    loadKoinModules(listOf(schedulerDataModule))
+    loadKoinModules(listOf(schedulerDataModule, schedulerModule))
 }
 
 /**
