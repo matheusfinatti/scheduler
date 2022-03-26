@@ -16,3 +16,4 @@ rootProject.name = "OfficeScheduler"
 include ':app'
 include ':core'
 include ':app:scheduler'
+include ':navigation'
