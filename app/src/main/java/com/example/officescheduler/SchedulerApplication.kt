@@ -3,9 +3,11 @@ package com.example.officescheduler
 import android.app.Application
 import com.example.core.injection.coreDataModule
 import com.example.core.log.Log
+import com.example.core.network.LocalWebServer
 import com.example.officescheduler.injection.appModule
 import com.example.scheduler.injection.schedulerDataModule
 import com.example.scheduler.injection.schedulerModule
+import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -28,6 +30,10 @@ class SchedulerApplication : Application() {
             androidContext(this@SchedulerApplication)
             modules(listOf(appModule, coreDataModule, schedulerDataModule, schedulerModule))
         }
+
+        // Initializes mock web server
+        val server by inject<LocalWebServer>()
+        server.init()
 
         Log.d("Application created")
     }

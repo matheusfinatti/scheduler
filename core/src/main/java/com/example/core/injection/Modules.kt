@@ -1,10 +1,12 @@
 package com.example.core.injection
 
 import com.example.core.BuildConfig
+import com.example.core.network.LocalWebServer
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
 /**
@@ -36,5 +38,10 @@ val coreDataModule = module {
         Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .build()
+    }
+
+    // Mock web server
+    single {
+        LocalWebServer(androidApplication().resources)
     }
 }

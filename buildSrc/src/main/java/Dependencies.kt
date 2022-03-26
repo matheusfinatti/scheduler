@@ -43,6 +43,7 @@ object Versions {
         const val espresso = "3.4.0"
     }
     const val turbine = "0.7.0"
+    const val mockWebServer = "4.9.3"
 
     // Quality dependencies
     const val detekt = "1.20.0-RC1"
@@ -106,6 +107,7 @@ object TestDependencies {
     const val koinjunit = "io.insert-koin:koin-test-junit4:${Versions.koin}"
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
     const val turbine = "app.cash.turbine:turbine:${Versions.turbine}"
+    const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.mockWebServer}"
 }
 
 object AndroidTestDependencies {

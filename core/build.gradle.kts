@@ -39,6 +39,7 @@ android {
 dependencies {
     implementation(Dependencies.android.timber)
     implementation(Dependencies.android.httpLogging)
+    implementation(Dependencies.test.mockWebServer) // Specially for this case
 
     api(Dependencies.android.core)
     api(Dependencies.android.moshi.base)
