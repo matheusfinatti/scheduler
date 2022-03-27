@@ -17,8 +17,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.example.scheduler.domain.model.SpaceCalendarEntry
+import com.example.scheduler.R
+import com.example.core.R as coreR
+import com.example.scheduler.domain.model.OfficeSpace
 import com.example.scheduler.presentation.ui.SpaceCard
 
 @Composable
@@ -32,12 +35,6 @@ fun SchedulerScreen(spaceId: Int, viewModel: SchedulerViewModel) {
 
     val space = spaceState ?: return // Would actually like to show an error here.
 
-    val entries by remember {
-        mutableStateOf(
-            (viewState as? SchedulerViewState.Entries)?.getCalendar(space) ?: emptyList()
-        )
-    }
-
     Scaffold(
         topBar = {
             TopAppBar(
@@ -47,10 +44,12 @@ fun SchedulerScreen(spaceId: Int, viewModel: SchedulerViewModel) {
             Column(Modifier.fillMaxWidth()) {
                 SpaceCard(officeSpace = space, modifier = Modifier.fillMaxWidth())
                 Spacer(modifier = Modifier.size(16.dp))
-                Text(text = "Unavailable dates", Modifier.padding(8.dp))
+                Text(text = stringResource(coreR.string.unavailable_dates), Modifier.padding(8.dp))
+                Text(text = stringResource(coreR.string.timezone_warning), Modifier.padding(8.dp))
                 Spacer(modifier = Modifier.size(16.dp))
                 CalendarEntries(
-                    entries = entries,
+                    space = space,
+                    viewState = viewState as? SchedulerViewState.Entries,
                     modifier = Modifier.padding(8.dp)
                 )
             }
@@ -59,13 +58,19 @@ fun SchedulerScreen(spaceId: Int, viewModel: SchedulerViewModel) {
 }
 
 @Composable
-fun CalendarEntries(entries: List<SpaceCalendarEntry>, modifier: Modifier) {
+fun CalendarEntries(
+    space: OfficeSpace,
+    viewState: SchedulerViewState.Entries?,
+    modifier: Modifier
+) {
+    val entries = viewState?.getCalendar(space) ?: return
+
     LazyColumn(modifier) {
         items(entries) { entry ->
             Row {
-                Text(text = String.format("From: %ta %td %tk:%tM", entry.startTime, entry.startTime, entry.startTime, entry.startTime))
+                Text(text = "From ${viewState.getDateString(entry.startTime)}")
                 Spacer(Modifier.size(8.dp))
-                Text(text = String.format("To: %ta %td %tk:%tM", entry.endTime, entry.endTime, entry.endTime, entry.endTime))
+                Text(text = "To ${viewState.getDateString(entry.endTime)}")
             }
         }
     }

@@ -1,3 +1,4 @@
+@file:Suppress("UndocumentedPublicFunction", "FunctionNaming")
 package com.example.scheduler.presentation.ui
 
 import androidx.compose.foundation.layout.Column

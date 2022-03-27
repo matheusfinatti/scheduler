@@ -3,6 +3,9 @@ package com.example.scheduler.domain.model
 import com.example.scheduler.data.remote.model.SpaceEntryDataModel
 import java.util.TimeZone
 
+/**
+ * Office space model.
+ */
 data class OfficeSpace(
     val id: Int,
     val name: String,

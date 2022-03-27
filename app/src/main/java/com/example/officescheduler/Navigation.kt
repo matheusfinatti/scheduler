@@ -1,3 +1,4 @@
+@file:Suppress("UndocumentedPublicFunction", "FunctionNaming")
 package com.example.officescheduler
 
 import androidx.activity.ComponentActivity

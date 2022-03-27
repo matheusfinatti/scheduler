@@ -38,6 +38,7 @@ class LocalWebServer(private val resources: Resources) {
     /**
      * Initializes the web server.
      */
+    @Suppress("MagicNumber", "UseIfInsteadOfWhen")
     fun init() {
         server.start()
 
