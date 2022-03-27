@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -23,18 +24,15 @@ fun SpaceList(viewState: SchedulerViewState.Entries, onItemClick: (OfficeSpace) 
             .padding(8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        viewState.spaces.forEach { space ->
-            item {
-                SpaceCard(officeSpace = space,
-                    Modifier
-                        .fillParentMaxWidth()
-                        .clickable {
-                            onItemClick(space)
-                        }
-                )
-            }
+        items(viewState.spaces.toList(), key = { it.id }) { space ->
+            SpaceCard(officeSpace = space,
+                Modifier
+                    .fillParentMaxWidth()
+                    .clickable {
+                        onItemClick(space)
+                    }
+            )
         }
-
     }
 }
 

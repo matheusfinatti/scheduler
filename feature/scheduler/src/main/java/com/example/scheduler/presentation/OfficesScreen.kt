@@ -18,7 +18,7 @@ import com.example.scheduler.presentation.ui.SpaceList
 @Composable
 fun OfficesScreen(viewModel: SchedulerViewModel) {
     val viewState by viewModel.viewState.collectAsState()
-    remember { viewModel.getEntries() }
+    remember { viewModel.getEntries() } // Not sure how to avoid re-calling on config changes
 
     Box(
         Modifier

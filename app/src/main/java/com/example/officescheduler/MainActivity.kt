@@ -24,6 +24,7 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 navigationManager.commands.collectAsState().value.also { command ->
                     if (command.destination.isNotEmpty()) {
+                        // This is crashing when orientation changes. Not sure why.
                         navController.navigate(command.destination)
                     }
                 }
