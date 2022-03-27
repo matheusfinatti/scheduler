@@ -41,6 +41,7 @@ android {
 
 dependencies {
     implementation(project(Projects.core))
+    implementation(project(Projects.navigation))
 
     implementation(Dependencies.android.coil)
     implementation(Dependencies.android.core)

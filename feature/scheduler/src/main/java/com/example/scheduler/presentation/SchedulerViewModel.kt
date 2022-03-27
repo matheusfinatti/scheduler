@@ -1,29 +1,47 @@
 package com.example.scheduler.presentation
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.navigation.NavigationManager
+import com.example.navigation.SchedulerDirections
+import com.example.scheduler.domain.model.OfficeSpace
 import com.example.scheduler.domain.usecases.GetAllSpacesEntriesUseCase
+import com.example.scheduler.presentation.ui.OnOfficeSpaceInteractor
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.launch
 
 /**
  * View model for the scheduler screen.
  */
 class SchedulerViewModel(
+    private val navigationManager: NavigationManager,
     private val getAllSpacesEntriesUseCase: GetAllSpacesEntriesUseCase,
-) : ViewModel() {
+) : ViewModel(), OnOfficeSpaceInteractor {
+
+    private val state = MutableStateFlow<SchedulerViewState>(SchedulerViewState.Empty)
 
     /**
-     * Requests the spaces & calendar entries.
-     *
-     * @return a [Flow] that emits the current view state of the request.
+     * Provides a flow for querying the current view state.
      */
-     fun getEntries() = flow {
-         emit(SchedulerViewState.Loading)
+    val viewState: StateFlow<SchedulerViewState> = state
 
-         getAllSpacesEntriesUseCase.execute().collect { entries ->
-             emit(SchedulerViewState.Entries(entries))
-         }
-     }.catch { error ->
-        emit(SchedulerViewState.Error(error))
+    /**
+     * Requests the spaces & calendar entries. View state is emitted in [viewState] flow.
+     */
+     fun getEntries() = viewModelScope.launch {
+         state.value = SchedulerViewState.Loading
+
+         getAllSpacesEntriesUseCase()
+             .catch { error ->
+                 state.value = SchedulerViewState.Error(error)
+             }.collect { entries ->
+                 state.value = SchedulerViewState.Entries(entries)
+             }
+     }
+
+    override fun onClickOfficeSpace(space: OfficeSpace) {
+        navigationManager.navigate(SchedulerDirections.scheduler, "${space.id}")
     }
 }

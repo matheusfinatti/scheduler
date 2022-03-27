@@ -49,7 +49,7 @@ class GetAllSpacesEntriesUseCaseTest {
         coEvery { repository.getSpaces() } returns flowOf(entries)
 
         // when
-        val result = usecase.execute().first()
+        val result = usecase().first()
 
         // then
         val expectedResult = mapOf(
@@ -66,7 +66,7 @@ class GetAllSpacesEntriesUseCaseTest {
         coEvery { repository.getSpaces() } returns flowOf(emptyList())
 
         // when
-        val result = usecase.execute().first()
+        val result = usecase().first()
 
         // then
         assertEquals(emptyMap<OfficeSpace, List<SpaceCalendarEntry>>(), result)

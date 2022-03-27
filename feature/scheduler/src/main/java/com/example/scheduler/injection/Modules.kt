@@ -41,6 +41,7 @@ val schedulerModule = module {
     // View Model
     viewModel {
         SchedulerViewModel(
+            navigationManager = get(),
             getAllSpacesEntriesUseCase = get()
         )
     }
