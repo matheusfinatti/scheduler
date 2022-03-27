@@ -1,7 +1,0 @@
-# OfficeApiServer
-
-## Package
-```
-./gradlew distZip
-```
-
