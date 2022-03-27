@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.example.scheduler.domain.model.OfficeSpace
 import com.example.scheduler.domain.model.SpaceCalendarEntry
 import com.example.scheduler.presentation.SchedulerViewState
-import java.util.Date
+import java.time.LocalDateTime
 import java.util.TimeZone
 
 @Composable
@@ -48,8 +48,8 @@ private fun ListPreview() {
                 timezone = TimeZone.getDefault(),
             ) to listOf(
                 SpaceCalendarEntry(
-                    startTime = Date(),
-                    endTime = Date(),
+                    startTime = LocalDateTime.now(),
+                    endTime = LocalDateTime.now(),
                 ),
             ),
             OfficeSpace(
@@ -59,8 +59,8 @@ private fun ListPreview() {
                 timezone = TimeZone.getDefault(),
             ) to listOf(
                 SpaceCalendarEntry(
-                    startTime = Date(),
-                    endTime = Date(),
+                    startTime = LocalDateTime.now(),
+                    endTime = LocalDateTime.now(),
                 ),
             ),
         )
