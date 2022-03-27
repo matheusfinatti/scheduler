@@ -21,7 +21,7 @@ class GetAllSpacesEntriesUseCase(
      *
      * @return a [Flow] that emits the the map of entries.
      */
-     suspend operator fun invoke() = repository.getSpaces().map {  list ->
+    suspend operator fun invoke() = repository.getSpaces().map { list ->
         list.groupBy { dataModel ->
             dataModel.name
         }.mapKeys { entry ->

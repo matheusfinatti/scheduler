@@ -1,3 +1,4 @@
+@file:Suppress("UndocumentedPublicFunction", "FunctionNaming", "UnusedPrivateMember")
 package com.example.scheduler.presentation.ui
 
 import androidx.compose.foundation.clickable
@@ -25,8 +26,9 @@ fun SpaceList(viewState: SchedulerViewState.Entries, onItemClick: (OfficeSpace) 
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(viewState.spaces.toList(), key = { it.id }) { space ->
-            SpaceCard(officeSpace = space,
-                Modifier
+            SpaceCard(
+                officeSpace = space,
+                modifier = Modifier
                     .fillParentMaxWidth()
                     .clickable {
                         onItemClick(space)

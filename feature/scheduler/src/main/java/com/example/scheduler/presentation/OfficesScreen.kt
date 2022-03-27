@@ -1,3 +1,4 @@
+@file:Suppress("UndocumentedPublicFunction", "FunctionNaming", "UnusedPrivateMember", "MagicNumber")
 package com.example.scheduler.presentation
 
 import androidx.compose.foundation.background
@@ -41,7 +42,7 @@ fun OfficesScreen(viewModel: SchedulerViewModel) {
 @Composable
 fun Loading() {
     Column(Modifier.fillMaxWidth()) {
-        (1..3).forEach { _ ->
+        for (i in 1..3) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -51,7 +52,6 @@ fun Loading() {
             Spacer(Modifier.size(16.dp))
         }
     }
-
 }
 
 @Composable

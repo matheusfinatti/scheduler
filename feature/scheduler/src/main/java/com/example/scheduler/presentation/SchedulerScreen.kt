@@ -1,3 +1,4 @@
+@file:Suppress("UndocumentedPublicFunction", "FunctionNaming", "UnusedPrivateMember")
 package com.example.scheduler.presentation
 
 import androidx.compose.foundation.layout.Column
@@ -19,7 +20,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.example.scheduler.R
 import com.example.core.R as coreR
 import com.example.scheduler.domain.model.OfficeSpace
 import com.example.scheduler.presentation.ui.SpaceCard
@@ -38,7 +38,8 @@ fun SchedulerScreen(spaceId: Int, viewModel: SchedulerViewModel) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(space.name) })
+                title = { Text(space.name) }
+            )
         },
         content = {
             Column(Modifier.fillMaxWidth()) {

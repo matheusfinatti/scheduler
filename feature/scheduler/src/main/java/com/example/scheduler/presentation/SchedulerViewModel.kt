@@ -30,16 +30,16 @@ class SchedulerViewModel(
     /**
      * Requests the spaces & calendar entries. View state is emitted in [viewState] flow.
      */
-     fun getEntries() = viewModelScope.launch {
-            state.value = SchedulerViewState.Loading
+    fun getEntries() = viewModelScope.launch {
+        state.value = SchedulerViewState.Loading
 
-            getAllSpacesEntriesUseCase()
-                .catch { error ->
-                    state.value = SchedulerViewState.Error(error)
-                }.collect { entries ->
-                    state.value = SchedulerViewState.Entries(entries)
-                }
-        }
+        getAllSpacesEntriesUseCase()
+            .catch { error ->
+                state.value = SchedulerViewState.Error(error)
+            }.collect { entries ->
+                state.value = SchedulerViewState.Entries(entries)
+            }
+    }
 
     override fun onClickOfficeSpace(space: OfficeSpace) {
         navigationManager.navigate(SchedulerDirections.scheduler, "${space.id}")
