@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="unavailable_dates">Unavailable dates</string>
+    <string name="unavailable_dates">Booked dates</string>
     <string name="timezone_warning">Times are in local timezone</string>
 
 </resources>
